@@ -111,6 +111,11 @@ input[type="button"]{
     border: none;
     border-radius: 6px;
     padding: 0px 20px;
+    cursor: pointer;
+}
+input[type="button"]:hover{
+    color: #fff;
+    background-color: #555;
 }
 .icons{
     display: flexbox;

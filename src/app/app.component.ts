@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AppService } from './app.service';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Todo Cloud';
+
+  todo : any;
+
+  constructor(private appService: AppService) {}
+
+  ngOnInit() {
+    this.appService.getAllItems().subscribe(data => this.todo = data)
+    
+  }
+  
 }

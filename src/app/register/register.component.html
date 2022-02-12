@@ -1,0 +1,15 @@
+
+<div class="register-container">
+    <div class="form-container">
+        <h3>REGISTER</h3>    
+        <form id="form">
+            <input type="email" name="email" placeholder="Email" (change)="handleEmail($event)"/>
+            <br/>
+            <input type="password" name="password" placeholder="Password" (change)="handlePassword($event)"/>
+            <br/>
+            <button routerLink="/dashboard" type="button" (click)="createUser()">REGISTER</button>
+        </form>
+    </div>
+    <p>Are you already a user?</p>
+    <p><a routerLink="/">LOGIN</a></p>
+</div>

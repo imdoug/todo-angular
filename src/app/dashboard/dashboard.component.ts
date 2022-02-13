@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AppService } from '../app.service';
 
 @Component({
@@ -60,6 +60,10 @@ export class DashboardComponent implements OnInit {
   // get all items 
   get(){
     this.currentUser = this.appService.getCurrentUser()
+  }
+  // 
+  goToDetail(id: string){
+    this._router.navigate([`detail/${id}`])
   }
 
   ngOnInit(): void {

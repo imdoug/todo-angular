@@ -44,14 +44,11 @@
                 <p class="tags" *ngFor="let tag of todo.tags">#{{tag}}</p>
             </div>
             <div class="icons">
-                <button class="edit"><i class="fa fa-edit" style="font-size:24px"></i></button>
+                <button class="edit"  (click)="goToDetail(todo.item_id)"><i class="fa fa-edit" style="font-size:24px"></i></button>
                 <button class="trash" (click)="deleteTodo(todo.item_id)"><i class="fa fa-trash-o" style="font-size:24px"></i></button>
             </div>
         </div>
         <div class="space"></div>
     </div>
     <div class="line"></div>
-    <!-- <div>
-        {{newItem | async | json}}
-    </div> -->
 </div>

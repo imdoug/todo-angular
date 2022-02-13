@@ -1,0 +1,30 @@
+
+<div *ngIf="item" class="container-master">
+    <div class="container">
+        <div class="input-div">
+            <label  for="title">Title</label>
+            <br/>
+            <input type="text" id="title" [defaultValue]="item.title" (change)="handleTitle($event)" required/>  
+        </div>
+        <div class="input-div">
+            <label  for="description">Description</label>
+            <br/>
+            <input type="text" id="description" [defaultValue]="item.description" (change)="handleDescription($event)" required />
+        </div>
+        <div class="input-div">
+            <label  for="duedate">Due Date</label>
+            <br/>
+            <input type="date" id="duedate" [defaultValue]="item.duedate" (change)="handleDuedate($event)" required/>
+        </div>
+        <div  class="input-div">
+            <label  for="tags">Tags</label>
+            <br/>
+            <input  type="text" id="tags" [defaultValue]="item.tags.join(' ')" (change)="handleTags($event)" required/>   
+        </div>
+        <br/>
+        <div class="button">
+            <input type='button' routerLink="/dashboard" value="UPDATE" (click)="updateItem()"/>
+        </div>
+    </div>
+
+</div>

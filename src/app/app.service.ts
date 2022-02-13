@@ -9,9 +9,15 @@ export class AppService{
 
     currentUser: any
 
+
+
     // get all items
     getAllItems(){
         return this.http.get(this.ROOT_URL + 'items');
+    }
+    // 
+    getSingleItem(id: any){
+        return this.http.get(this.ROOT_URL + `items/${id}`);
     }
     // create new item 
     createItem(item: object){
@@ -21,7 +27,11 @@ export class AppService{
     deleteItem(id: number){
         return this.http.delete<any>(this.ROOT_URL + `items/${id}`)
     }
-
+    // update item 
+    updateItem(newItem: any){
+        console.log(newItem)
+        return this.http.put<any>(this.ROOT_URL + `items/${newItem.item_id}`, newItem)
+    }
 
     //  USER // SESSIONS 
     //  create new user

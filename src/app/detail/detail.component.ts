@@ -56,7 +56,6 @@ export class DetailComponent implements OnInit {
   // 
   updateItem(){
     const currentUser = this.detail.getCurrentUser()
-    console.log(this.newItem.tags)
     if(this.item.creator_id === currentUser.user_id){
       this.newItem.creator_id = this.item.creator_id
       this.newItem.item_id = this.item.item_id

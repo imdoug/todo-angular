@@ -29,7 +29,6 @@ export class AppService{
     }
     // update item 
     updateItem(newItem: any){
-        console.log(newItem)
         return this.http.put<any>(this.ROOT_URL + `items/${newItem.item_id}`, newItem)
     }
 

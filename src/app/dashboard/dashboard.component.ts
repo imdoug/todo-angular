@@ -74,4 +74,8 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem("currentUser");
   }
 
+  updateData(){
+    this.appService.getAllItems().subscribe(data => this.todos = data)
+  }
+
 }

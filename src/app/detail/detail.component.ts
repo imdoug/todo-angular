@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from '../app.service';
 import { switchMap } from 'rxjs';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class DetailComponent implements OnInit {
     creator_id: 0
   }
 
-  constructor( private detail: AppService, private route: ActivatedRoute) { }
+  constructor( private detail: AppService, private route: ActivatedRoute, private dashboard: DashboardComponent) { }
 
   ngOnInit(): void {
     this.route.paramMap.pipe( 
@@ -72,7 +73,7 @@ export class DetailComponent implements OnInit {
       this.detail.updateItem(this.newItem).subscribe( res =>{
         this.item = res[0]
       })
-      this.detail.getAllItems()
+      this.dashboard.updateData()
 
     }else{
       alert('Not authorized to update')

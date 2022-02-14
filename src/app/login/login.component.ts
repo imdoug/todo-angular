@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.login.login(this.user)
       .subscribe( res => {
         localStorage.setItem('currentUser', JSON.stringify(res));
+        this._router.navigate(['dashboard'])
       })
   }
 }

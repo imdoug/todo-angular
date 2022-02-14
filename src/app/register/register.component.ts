@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
     this.register.register(this.user)
       .subscribe( res => {
         localStorage.setItem('currentUser', JSON.stringify(res));
+        this._router.navigate(['dashboard'])
       })
   }
 

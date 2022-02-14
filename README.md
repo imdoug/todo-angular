@@ -2,6 +2,13 @@
 
 An Angular app build with TypeScript/Javascript With a PostgrestSQL databse and Node.js RESTful api.
 
+### Installation
+1. Clone this repository
+2. Install the application: npm install
+3. Start the server: node server.js
+4. View in browser at http://localhost:8080
+
+
 ## Registration / Sessions 
 
 Users can register on the app and will automaticaly be redirected to the dashboard if registration is successful 

@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http'
 export class AppService{
     constructor(private http: HttpClient){}
 
-    ROOT_URL = 'http://localhost:8000/'
+    ROOT_URL = 'https://todo-database-api.herokuapp.com/'
 
     currentUser: any
 

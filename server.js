@@ -1,8 +1,13 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+
 const app = express();
-app.use(express.static(__dirname + './dist/todo'));
-app.get('/*', function(req,res) {
-res.sendFile(path.join(__dirname+
-'/dist/todo/index.html'));});
+
+app.use(express.static("./dist/project-name"));
+
+app.get("/*", function (req, res) {
+  res.sendFile("index.html", { root: "dist/project-name" });
+});
+
 app.listen(process.env.PORT || 8080);
+
+console.log(`Running on port ${process.env.PORT || 8080}`);

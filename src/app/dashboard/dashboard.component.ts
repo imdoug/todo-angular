@@ -68,6 +68,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.appService.getAllItems().subscribe(data => this.todos = data)
+    this.appService.currentTodos.subscribe(todos => this.todos = todos)
   }
   
   logout(){
@@ -75,7 +76,8 @@ export class DashboardComponent implements OnInit {
   }
 
   updateData(){
-    this.appService.getAllItems().subscribe(data => this.todos = data)
+    this.todos = this.appService.getAllItems()
   }
+  
 
 }

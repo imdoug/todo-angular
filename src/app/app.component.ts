@@ -13,11 +13,13 @@ export class AppComponent {
 
   todo : any;
 
+  todos: any
+
   constructor(private appService: AppService) {}
 
   ngOnInit() {
     this.appService.getAllItems().subscribe(data => this.todo = data)
-    
+    this.appService.currentTodos.subscribe(todos => this.todos = todos)  
   }
   
 }

@@ -1,16 +1,22 @@
 import { Injectable } from "@angular/core";
 import {HttpClient} from '@angular/common/http'
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({ providedIn: 'root'})
 export class AppService{
     constructor(private http: HttpClient){}
+
+    private todosSource = new BehaviorSubject<any>({})
+    currentTodos = this.todosSource.asObservable()
 
     ROOT_URL = 'https://todo-database-api.herokuapp.com/'
 
     currentUser: any
 
 
-
+    updateTodos(todos: any){
+        this.todosSource.next(todos)
+    }
     // get all items
     getAllItems(){
         return this.http.get(this.ROOT_URL + 'items');

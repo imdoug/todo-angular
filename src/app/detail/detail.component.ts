@@ -23,7 +23,9 @@ export class DetailComponent implements OnInit {
     creator_id: 0
   }
 
-  constructor( private detail: AppService, private route: ActivatedRoute, private dashboard: DashboardComponent) { }
+  todos: any
+
+  constructor( private detail: AppService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.pipe( 
@@ -34,6 +36,8 @@ export class DetailComponent implements OnInit {
     ).subscribe(res =>{
       this.item = res
     })
+    this.detail.getAllItems().subscribe(data => this.todos = data)
+    this.detail.currentTodos.subscribe(todos => this.todos = todos)
   }
 
   // 
@@ -73,10 +77,20 @@ export class DetailComponent implements OnInit {
       this.detail.updateItem(this.newItem).subscribe( res =>{
         this.item = res[0]
       })
-      this.dashboard.updateData()
-
+      this.detail.getAllItems().subscribe( data => this.todos = data)
     }else{
       alert('Not authorized to update')
     }
+  }
+
+  getItem(){
+    this.route.paramMap.pipe( 
+      switchMap( params => {
+        const id = params.get('id')
+        return this.detail.getSingleItem(id)
+    })
+    ).subscribe(res =>{
+      this.item = res
+    })
   }
 }

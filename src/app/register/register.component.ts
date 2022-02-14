@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
     password: ''
   }
 
+  registerError: any
+
   constructor(private register: AppService, private _router: Router) { }
 
   ngOnInit(): void {
@@ -32,9 +34,13 @@ export class RegisterComponent implements OnInit {
 
   createUser(){
     this.register.register(this.user)
-      .subscribe( res => {
-        localStorage.setItem('currentUser', JSON.stringify(res));
-        this._router.navigate(['dashboard'])
+      .subscribe( {
+      next: (v) => { 
+        localStorage.setItem('currentUser', JSON.stringify(v));
+        this._router.navigate(['dashboard'])},
+      error: (e) =>{
+        this.registerError = "Email needs to be unique"
+      }
       })
   }
 

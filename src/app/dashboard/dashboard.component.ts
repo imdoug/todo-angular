@@ -60,6 +60,9 @@ export class DashboardComponent implements OnInit {
   // get all items 
   get(){
     this.currentUser = this.appService.getCurrentUser()
+    if(this.currentUser.email === undefined){
+      this._router.navigate([''])
+    }
   }
   // 
   goToDetail(id: string){
@@ -69,6 +72,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.appService.getAllItems().subscribe(data => this.todos = data)
     this.appService.currentTodos.subscribe(todos => this.todos = todos)
+    this.appService.currentUser.subscribe( data => this.currentUser = data)
   }
   
   logout(){
@@ -77,6 +81,9 @@ export class DashboardComponent implements OnInit {
 
   updateData(){
     this.todos = this.appService.getAllItems()
+  }
+  backToLogin(){
+    this._router.navigate([''])
   }
   
 

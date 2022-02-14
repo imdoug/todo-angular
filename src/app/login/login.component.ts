@@ -13,10 +13,14 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   }
+  currentUser: any
+
+  loginError: any
+
   constructor(private login: AppService, private _router: Router) { }
 
   ngOnInit(): void {
-
+    this.login.currentUser.subscribe( data => this.currentUser = data)
   }
 
   handleEmail(event: any){
@@ -31,9 +35,13 @@ export class LoginComponent implements OnInit {
 
   loginUser(){
     this.login.login(this.user)
-      .subscribe( res => {
-        localStorage.setItem('currentUser', JSON.stringify(res));
-        this._router.navigate(['dashboard'])
+      .subscribe( {
+        next: (v) => {this.currentUser = v
+          localStorage.setItem('currentUser', JSON.stringify(v));
+          this._router.navigate(['dashboard'])
+        },
+        error: (e) => this.loginError = "Your email or password is incorrect, please try again."
       })
+      console.log(this.loginError)
   }
 }

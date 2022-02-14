@@ -1,55 +1,56 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {{get()}}
-<div class="user-info">
-    <div class="profile">
-        <p class="user"><i class="fa fa-user" style="font-size:24px"></i></p>
-        <p class="email">{{currentUser.email}}</p>
-    </div>
-    <button routerLink="" (click)="logout()" class="logout"><i class="fa fa-sign-out" style="font-size:28px"></i></button>
-    <!-- user photo / name / logout -->
-</div>
-<div class="line"></div>
-<div class="painel">
-    <div class="labels">
-        <p>Title</p>
-        <p>Description</p>
-        <p>Due Date</p>
-        <p>Tags</p>
-    </div>
-    <div class="add-row">
-        <p class="add"><i class="fa fa-plus" style="font-size:34px"></i></p>
-        <div class="input-row">
-            <input type="text" name="title" placeholder="..." (change)="handleTitle($event)"/>
-            <input type="text" name="description" placeholder="..." (change)="handleDescription($event)"/>
-            <input type="date" name="duedate" placeholder="..." (change)="handleDuedate($event)"/>
-            <input type="text" name="tags" placeholder="..." (change)="handleTags($event)"/>
-            <input type="button" value="create" (click)="createTodo()"/>
+<div *ngIf="currentUser.email !== undefined" >
+    <div class="user-info">
+        <div class="profile">
+            <p class="user"><i class="fa fa-user" style="font-size:24px"></i></p>
+            <p class="email">{{currentUser.email}}</p>
         </div>
-        <!-- this div will  handle adding new items -->
-    </div>
-    <div class="space"></div>
-    <div class="container" *ngFor="let todo of todos" >
-
-        <div class="item" *ngIf="todo.creator_id === currentUser.user_id">
-            <div class="item-section-1">
-                <p>{{todo.title}}</p>
-            </div>
-            <div class="item-section-2">
-                <p>{{todo.description}}</p>
-            </div>
-            <div class="item-section-3">
-                <p>{{todo.duedate.replaceAll('-', '/').split('T', 1)}}</p>
-            </div>
-            <div class="item-section-4">
-                <p class="tags" *ngFor="let tag of todo.tags">#{{tag}}</p>
-            </div>
-            <div class="icons">
-                <button class="edit"  (click)="goToDetail(todo.item_id)"><i class="fa fa-edit" style="font-size:24px"></i></button>
-                <button class="trash" (click)="deleteTodo(todo.item_id)"><i class="fa fa-trash-o" style="font-size:24px"></i></button>
-            </div>
-        </div>
-        <div class="space"></div>
+        <button routerLink="" (click)="logout()" class="logout"><i class="fa fa-sign-out" style="font-size:28px"></i></button>
+        <!-- user photo / name / logout -->
     </div>
     <div class="line"></div>
-
+    <div class="painel">
+        <div class="labels">
+            <p>Title</p>
+            <p>Description</p>
+            <p>Due Date</p>
+            <p>Tags</p>
+        </div>
+        <div class="add-row">
+            <p class="add"><i class="fa fa-plus" style="font-size:34px"></i></p>
+            <div class="input-row">
+                <input type="text" name="title" placeholder="..." (change)="handleTitle($event)"/>
+                <input type="text" name="description" placeholder="..." (change)="handleDescription($event)"/>
+                <input type="date" name="duedate" placeholder="..." (change)="handleDuedate($event)"/>
+                <input type="text" name="tags" placeholder="..." (change)="handleTags($event)"/>
+                <input type="button" value="create" (click)="createTodo()"/>
+            </div>
+            <!-- this div will  handle adding new items -->
+        </div>
+        <div class="space"></div>
+        <div class="container" *ngFor="let todo of todos" >
+    
+            <div class="item" *ngIf="todo.creator_id === currentUser.user_id">
+                <div class="item-section-1">
+                    <p>{{todo.title}}</p>
+                </div>
+                <div class="item-section-2">
+                    <p>{{todo.description}}</p>
+                </div>
+                <div class="item-section-3">
+                    <p>{{todo.duedate.replaceAll('-', '/').split('T', 1)}}</p>
+                </div>
+                <div class="item-section-4">
+                    <p class="tags" *ngFor="let tag of todo.tags">#{{tag}}</p>
+                </div>
+                <div class="icons">
+                    <button class="edit"  (click)="goToDetail(todo.item_id)"><i class="fa fa-edit" style="font-size:24px"></i></button>
+                    <button class="trash" (click)="deleteTodo(todo.item_id)"><i class="fa fa-trash-o" style="font-size:24px"></i></button>
+                </div>
+            </div>
+            <div class="space"></div>
+        </div>
+        <div class="line"></div>
+    </div>
 </div>

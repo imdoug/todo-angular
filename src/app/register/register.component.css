@@ -63,3 +63,9 @@ p >a:hover{
     border: 1px solid #666;
     color: #666;
 }
+.register-error{
+    height: 10px;
+    color: red;
+    font-size: 12px;
+    margin: 0;
+}

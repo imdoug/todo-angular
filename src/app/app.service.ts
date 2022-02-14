@@ -9,13 +9,18 @@ export class AppService{
     private todosSource = new BehaviorSubject<any>({})
     currentTodos = this.todosSource.asObservable()
 
-    ROOT_URL = 'https://todo-database-api.herokuapp.com/'
+    private userSource = new BehaviorSubject<any>({})
+    currentUser = this.todosSource.asObservable()
 
-    currentUser: any
+    ROOT_URL = 'https://todo-database-api.herokuapp.com/'
 
 
     updateTodos(todos: any){
         this.todosSource.next(todos)
+    }
+
+    updateUser(user: any){
+        this.todosSource.next(user)
     }
     // get all items
     getAllItems(){

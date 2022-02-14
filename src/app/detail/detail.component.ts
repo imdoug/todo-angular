@@ -14,6 +14,8 @@ export class DetailComponent implements OnInit {
 
   item: any;
 
+  currentUser:  any
+
   newItem = {
     item_id: 0,
     title: '',
@@ -36,8 +38,9 @@ export class DetailComponent implements OnInit {
     ).subscribe(res =>{
       this.item = res
     })
+    this.detail.getAllItems().subscribe( data => this.currentUser = data)
     this.detail.getAllItems().subscribe(data => this.todos = data)
-    this.detail.currentTodos.subscribe(todos => this.todos = todos)
+    this.detail.currentUser.subscribe( data => this.currentUser = data)
   }
 
   // 

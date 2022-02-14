@@ -8,6 +8,7 @@
             <input type="password" name="password" placeholder="Password" (change)="handlePassword($event)"/>
             <br/>
             <button  type="button" (click)="createUser()">REGISTER</button>
+            <p class="register-error" *ngIf="registerError !== ' ' ">{{registerError}}</p>
         </form>
     </div>
     <p>Are you already a user?</p>

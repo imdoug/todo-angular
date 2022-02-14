@@ -16,7 +16,7 @@ Users can delete todos by clicking on the trash in their todos item on dashboard
 
 #### Live app 
 
-https://dashboard.heroku.com/apps/todo-cloud-app
+https://todo-cloud-app.herokuapp.com/
 
 ##### Api 
 
